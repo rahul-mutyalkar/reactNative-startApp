@@ -5,7 +5,15 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Alert} from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  Alert,
+  TouchableOpacity,
+  Button
+} from 'react-native';
 
 import BackgroundGeolocation from "react-native-background-geolocation";
 var SmsAndroid = require('react-native-sms-android');
@@ -24,19 +32,24 @@ export default class App extends Component < Props > {
 
     this.state = {};
   }
+
+  button1() {
+    console.log('clicked button 1');
+    alert('clicked button1');
+  }
   componentWillMount() {
     ////
     // 1.  Wire up event-listeners
     //
-    let self=this;
-    /*asking for permission*/
+    let self = this;
+    /* asking for permission */
 
     Permissions.request('readSms').then(response => {
-      /*get SMS list*/
+      /* get SMS list */
       console.warn('permission grated: ');
       self.getSMS();
 
-})
+    })
 
     // This handler fires whenever bgGeo receives a location update.
     BackgroundGeolocation.on('location', this.onLocation.bind(this), this.onError);
@@ -109,26 +122,26 @@ export default class App extends Component < Props > {
     console.log('- [event] motionchange: ', location.isMoving, location);
   }
   render() {
-    return (<View style={styles.container}>
-      <Text >
+    return (<View style={styles.container
+}>
+      <Text>
         Location Plugin
       </Text>
-      <Text>
+      <Text >
         {this.state.locationInfo}
-      </Text>
+      </Text >
+    
     </View >);
-  }
-
-  /* SMS Plugin is here */
+  }/* SMS Plugin is here */
   getSMS() {
-    /* List SMS messages matching the filter */
+    / * List SMS messages matching the filter * /
     var filter = {
       box: '', // 'inbox' (default), 'sent', 'draft', 'outbox', 'failed', 'queued', and '' for all
       // the next 4 filters should NOT be used together, they are OR-ed so pick one
-    //  read: 0, // 0 for unread SMS, 1 for SMS already read
-      //_id: 1234, // specify the msg id
-      //address: '+97433------', // sender's phone number
-      //body: 'Hello', // content to match
+      //  read: 0,  0 for unread SMS, 1 for SMS already read
+      //_id: 1234,  specify the msg id
+      //address: '+97433------',  sender's phone number
+      //body: 'Hello',  content to match
       // the next 2 filters can be used for pagination
       indexFrom: 0, // start from index 0
       maxCount: 10, // count of SMS to return each time
@@ -146,17 +159,13 @@ export default class App extends Component < Props > {
         // console.log("-->" + obj.date);
         // console.log("-->" + obj.body);
       }
-      Alert.alert(
-    'SMS info',
-    'fetched SMS"s are'+smsList.length,
-    [
-      {
-        text: 'Got it',
-        onPress: () => console.log('Permission denied'),
-        style: 'cancel',
-      }
-    ],
-  )
+      Alert.alert('SMS info', 'fetched SMS"s are' + smsList.length, [
+        {
+          text: 'Got it',
+          onPress: () => console.log('Permission denied'),
+          style: 'cancel'
+        }
+      ],)
     });
   }
 
