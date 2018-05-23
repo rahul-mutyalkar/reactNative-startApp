@@ -9,7 +9,9 @@
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
-    "react-native-background-geolocation": "^2.12.1"
+    "react-native-background-geolocation": "^2.12.1",
+    "react-native-permissions": "^1.1.1",
+    "react-native-sms-android": "^0.4.1"
   },
   "devDependencies": {
     "babel-jest": "22.4.4",
