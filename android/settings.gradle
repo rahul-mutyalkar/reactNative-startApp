@@ -1,4 +1,6 @@
 rootProject.name = 'starterApp'
+include ':react-native-call-log'
+project(':react-native-call-log').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-call-log/android')
 include ':react-native-sms-android'
 project(':react-native-sms-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sms-android/android')
 include ':react-native-background-fetch'

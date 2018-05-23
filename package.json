@@ -10,6 +10,7 @@
     "react": "16.3.1",
     "react-native": "0.55.4",
     "react-native-background-geolocation": "^2.12.1",
+    "react-native-call-log": "git+https://github.com/wscodelabs/react-native-call-log.git",
     "react-native-permissions": "^1.1.1",
     "react-native-sms-android": "^0.4.1"
   },

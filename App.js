@@ -10,14 +10,15 @@ import {
   StyleSheet,
   Text,
   View,
+  Button,
   Alert,
-  TouchableOpacity,
-  Button
+  PermissionsAndroid
 } from 'react-native';
 
 import BackgroundGeolocation from "react-native-background-geolocation";
 var SmsAndroid = require('react-native-sms-android');
 import Permissions from 'react-native-permissions'
+import CallLogs from 'react-native-call-log'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -33,23 +34,15 @@ export default class App extends Component < Props > {
     this.state = {};
   }
 
-  button1() {
-    console.log('clicked button 1');
-    alert('clicked button1');
-  }
   componentWillMount() {
     ////
     // 1.  Wire up event-listeners
     //
     let self = this;
     /* asking for permission */
+    //
 
-    Permissions.request('readSms').then(response => {
-      /* get SMS list */
-      console.warn('permission grated: ');
-      self.getSMS();
-
-    })
+    // this.getCallPermission()
 
     // This handler fires whenever bgGeo receives a location update.
     BackgroundGeolocation.on('location', this.onLocation.bind(this), this.onError);
@@ -122,19 +115,26 @@ export default class App extends Component < Props > {
     console.log('- [event] motionchange: ', location.isMoving, location);
   }
   render() {
-    return (<View style={styles.container
-}>
-      <Text>
+    return (<View style={styles.container}>
+      <Text >
         Location Plugin
       </Text>
       <Text >
         {this.state.locationInfo}
-      </Text >
-    
+      </Text>
+
+      <Button style={styles.buttonStyle} onPress={() => {
+          this.getSMS()
+        }} title="get sms list" color="#841584" accessibilityLabel="Learn more about this purple button"/>
+      <Button style={styles.buttonStyle} onPress={() => {
+          this.getCallPermission()
+        }} title="get call logs" color="#841584" accessibilityLabel="Learn more about this purple button"/>
     </View >);
-  }/* SMS Plugin is here */
+  }
+
+  /* SMS Plugin is here */
   getSMS() {
-    / * List SMS messages matching the filter * /
+    /* List SMS messages matching the filter */
     var filter = {
       box: '', // 'inbox' (default), 'sent', 'draft', 'outbox', 'failed', 'queued', and '' for all
       // the next 4 filters should NOT be used together, they are OR-ed so pick one
@@ -146,27 +146,67 @@ export default class App extends Component < Props > {
       indexFrom: 0, // start from index 0
       maxCount: 10, // count of SMS to return each time
     };
-
-    SmsAndroid.list(JSON.stringify(filter), (fail) => {
-      console.warn("OH Snap: " + fail)
-    }, (count, smsList) => {
-      console.log('Count: ', count);
-      console.log('List: ', smsList);
-      var arr = JSON.parse(smsList);
-      for (var i = 0; i < arr.length; i++) {
-        var obj = arr[i];
-        // console.warn("Index: " + i);
-        // console.log("-->" + obj.date);
-        // console.log("-->" + obj.body);
-      }
-      Alert.alert('SMS info', 'fetched SMS"s are' + smsList.length, [
-        {
-          text: 'Got it',
-          onPress: () => console.log('Permission denied'),
-          style: 'cancel'
+    Permissions.request('readSms').then(response => {
+      /* get SMS list */
+      console.warn('permission grated: ');
+      SmsAndroid.list(JSON.stringify(filter), (fail) => {
+        console.warn("OH Snap: " + fail)
+      }, (count, smsList) => {
+        console.log('Count: ', count);
+        console.log('List: ', smsList);
+        var arr = JSON.parse(smsList);
+        for (var i = 0; i < arr.length; i++) {
+          var obj = arr[i];
+          // console.warn("Index: " + i);
+          // console.log("-->" + obj.date);
+          // console.log("-->" + obj.body);
         }
-      ],)
-    });
+        Alert.alert('SMS info', 'fetched SMS"s are' + smsList.length, [
+          {
+            text: 'Got it',
+            onPress: () => console.log('Permission denied'),
+            style: 'cancel'
+          }
+        ],)
+      });
+
+    })
+
+  }
+
+  getCallPermission() {
+    let self = this;
+    Permissions.request('readCallLog').then(response => {
+      /* get SMS list */
+      console.warn('calllog permission grated: ');
+      CallLogs.show((logs) => {
+        // parse logs into json format
+        const parsedLogs = JSON.parse(logs);
+        Alert.alert('Call Logs info', 'call logs are' + logs.length, [
+          {
+            text: 'Got it',
+            onPress: () => console.log('Permission denied'),
+            style: 'cancel'
+          }
+        ],)
+
+        // logs data format
+        /*
+     [
+       {
+         phoneNumber: '9889789797',
+         callType: 'OUTGOING | INCOMING | MISSED',
+         callDate: timestamp,
+         callDuration: 'duration of call in sec',
+         callDayTime: Date()
+       },
+       .......
+      ]
+   */
+      });
+
+    })
+
   }
 
 }
@@ -187,5 +227,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5
+  },
+  buttonStyle: {
+    color: 'red',
+    marginTop: 20,
+    padding: 40,
+    backgroundColor: 'green'
   }
 });

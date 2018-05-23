@@ -141,6 +141,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-call-log')
     compile project(':react-native-sms-android')
     compile project(':react-native-background-fetch')
     compile project(':react-native-background-geolocation')
