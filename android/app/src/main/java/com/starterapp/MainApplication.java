@@ -3,6 +3,7 @@ package com.starterapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rhaker.reactnativesmsandroid.RNSmsAndroidPackage;
 import com.transistorsoft.rnbackgroundfetch.RNBackgroundFetchPackage;
 import com.transistorsoft.rnbackgroundgeolocation.RNBackgroundGeolocation;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNSmsAndroidPackage(),
             new RNBackgroundFetchPackage(),
             new RNBackgroundGeolocation()
       );
