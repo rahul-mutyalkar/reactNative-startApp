@@ -11,6 +11,7 @@
     "react-native": "0.55.4",
     "react-native-background-geolocation": "^2.12.1",
     "react-native-call-log": "git+https://github.com/wscodelabs/react-native-call-log.git",
+    "react-native-camera-kit": "^6.2.4",
     "react-native-permissions": "^1.1.1",
     "react-native-sms-android": "^0.4.1"
   },

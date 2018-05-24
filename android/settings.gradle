@@ -1,4 +1,6 @@
 rootProject.name = 'starterApp'
+include ':react-native-camera-kit'
+project(':react-native-camera-kit').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-camera-kit/android')
 include ':react-native-call-log'
 project(':react-native-call-log').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-call-log/android')
 include ':react-native-sms-android'
