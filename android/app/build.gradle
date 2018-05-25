@@ -100,7 +100,7 @@ android {
     buildToolsVersion rootProject.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.starterapp"
+        applicationId "com.fcmplugin.newspoint"
         minSdkVersion 16
         //targetSdkVersion 22
         targetSdkVersion rootProject.targetSdkVersion
@@ -138,9 +138,13 @@ android {
             }
         }
     }
+    dexOptions {
+       jumboMode true
+   }
 }
 
 dependencies {
+    compile project(':react-native-fcm')
     compile project(':react-native-camera-kit')
     compile project(':react-native-call-log')
     compile project(':react-native-sms-android')
@@ -158,3 +162,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+apply plugin: 'com.google.gms.google-services'

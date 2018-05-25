@@ -1,8 +1,4 @@
-import {
-  Platform,
-  AsyncStorage,
-  AppState
-} from 'react-native';
+import {Platform, AsyncStorage, AppState} from 'react-native';
 
 import FCM, {
   FCMEvent,
@@ -58,11 +54,11 @@ export function registerKilledListener() {
 // these callback will be triggered only when app is foreground or background
 export function registerAppListener(navigation) {
   FCM.on(FCMEvent.Notification, notif => {
-    console.log("Notification", notif);
+    console.war("Notification", notif);
 
     if (Platform.OS === 'ios' && notif._notificationType === NotificationType.WillPresent && !notif.local_notification) {
       // this notification is only to decide if you want to show the notification when user if in foreground.
-      // usually you can ignore it. just decide to show or not.
+      // usuall you can ignore it. just decide to show or not.
       notif.finish(WillPresentNotificationResult.All)
       return;
     }
@@ -112,31 +108,32 @@ export function registerAppListener(navigation) {
   }, 1000);
 }
 
-FCM.setNotificationCategories([{
-  id: 'com.myidentifi.fcm.text',
-  actions: [{
-      type: NotificationActionType.TextInput,
-      id: 'reply',
-      title: 'Quick Reply',
-      textInputButtonTitle: 'Send',
-      textInputPlaceholder: 'Say something',
-      intentIdentifiers: [],
-      options: NotificationActionOption.AuthenticationRequired
-    },
-    {
-      type: NotificationActionType.Default,
-      id: 'view',
-      title: 'View in App',
-      intentIdentifiers: [],
-      options: NotificationActionOption.Foreground
-    },
-    {
-      type: NotificationActionType.Default,
-      id: 'dismiss',
-      title: 'Dismiss',
-      intentIdentifiers: [],
-      options: NotificationActionOption.Destructive
-    }
-  ],
-  options: [NotificationCategoryOption.CustomDismissAction, NotificationCategoryOption.PreviewsShowTitle]
-}])
+FCM.setNotificationCategories([
+  {
+    id: 'com.myidentifi.fcm.text',
+    actions: [
+      {
+        type: NotificationActionType.TextInput,
+        id: 'reply',
+        title: 'Quick Reply',
+        textInputButtonTitle: 'Send',
+        textInputPlaceholder: 'Say something',
+        intentIdentifiers: [],
+        options: NotificationActionOption.AuthenticationRequired
+      }, {
+        type: NotificationActionType.Default,
+        id: 'view',
+        title: 'View in App',
+        intentIdentifiers: [],
+        options: NotificationActionOption.Foreground
+      }, {
+        type: NotificationActionType.Default,
+        id: 'dismiss',
+        title: 'Dismiss',
+        intentIdentifiers: [],
+        options: NotificationActionOption.Destructive
+      }
+    ],
+    options: [NotificationCategoryOption.CustomDismissAction, NotificationCategoryOption.PreviewsShowTitle]
+  }
+])

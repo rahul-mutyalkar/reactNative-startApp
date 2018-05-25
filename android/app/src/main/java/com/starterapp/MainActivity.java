@@ -1,4 +1,4 @@
-package com.starterapp;
+package com.fcmplugin.newspoint;
 
 import com.facebook.react.ReactActivity;
 

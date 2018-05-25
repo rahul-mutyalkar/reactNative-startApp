@@ -20,6 +20,11 @@ var SmsAndroid = require('react-native-sms-android');
 import Permissions from 'react-native-permissions'
 import CallLogs from 'react-native-call-log'
 
+/* FCM plugin */
+import FCM, {NotificationActionType} from "react-native-fcm";
+
+import {registerKilledListener, registerAppListener} from "./Listeners";
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu'
@@ -32,6 +37,42 @@ export default class App extends Component < Props > {
     super(props);
 
     this.state = {};
+  }
+
+  async componentDidMount() {
+    registerAppListener(this.props.navigation);
+    FCM.getInitialNotification().then(notif => {
+      // this.setState({initNotif: notif});
+      if (notif && notif.targetScreen === "detail") {
+        setTimeout(() => {
+          // this.props.navigation.navigate("Detail");
+        }, 500);
+      }
+    });
+
+    try {
+      let result = await FCM.requestPermissions({badge: false, sound: true, alert: true});
+    } catch (e) {
+      console.error(e);
+    }
+
+    FCM.getFCMToken().then(token => {
+      console.log("TOKEN (getFCMToken)", token);
+      // this.setState({
+      //   token: token || ""
+      // });
+    });
+
+    if (Platform.OS === "ios") {
+      FCM.getAPNSToken().then(token => {
+        console.log("APNS TOKEN (getFCMToken)", token);
+      });
+    }
+
+    // topic example
+
+    FCM.subscribeToTopic('sometopic')
+    // FCM.unsubscribeFromTopic('sometopic')
   }
 
   componentWillMount() {
