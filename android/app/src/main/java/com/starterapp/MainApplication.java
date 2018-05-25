@@ -3,6 +3,7 @@ package com.starterapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wix.RNCameraKit.RNCameraKitPackage;
 import com.wscodelabs.callLogs.CallLogPackage;
 import com.rhaker.reactnativesmsandroid.RNSmsAndroidPackage;
 import com.transistorsoft.rnbackgroundfetch.RNBackgroundFetchPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNCameraKitPackage(),
             new CallLogPackage(),
             new RNSmsAndroidPackage(),
             new RNBackgroundFetchPackage(),

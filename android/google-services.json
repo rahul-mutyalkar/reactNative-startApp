@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "227557322762",
+    "firebase_url": "https://newspoint-b51cf.firebaseio.com",
+    "project_id": "newspoint-b51cf",
+    "storage_bucket": "newspoint-b51cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227557322762:android:969529883e40bd72",
+        "android_client_info": {
+          "package_name": "com.fcmplugin.newspoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227557322762-03i8dukorf6qquef8tedg5nicfb24gog.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "227557322762-03i8dukorf6qquef8tedg5nicfb24gog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7S9RTEM1IxDnrNixFnQThFMWYPUvmuME"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

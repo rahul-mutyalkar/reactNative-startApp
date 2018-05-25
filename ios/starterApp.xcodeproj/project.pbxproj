@@ -45,6 +45,7 @@
 		81E872B45E1842B1B792B219 /* TSBackgroundFetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28EC7CB0E44F42CBBE827BEF /* TSBackgroundFetch.framework */; };
 		97B387F8B81A441A98B0E1C7 /* RNBackgroundFetch+AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6044EB8B824F309ED30657 /* RNBackgroundFetch+AppDelegate.m */; };
 		F2D05CD1D1AB422DBC63E9B9 /* libReactNativePermissions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C6AEAA365B4656B90B57EF /* libReactNativePermissions.a */; };
+		49F3AD158E204416A320B764 /* libReactNativeCameraKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 501337E4A4FD4C789A7A62FF /* libReactNativeCameraKit.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,6 +362,8 @@
 		CD6044EB8B824F309ED30657 /* RNBackgroundFetch+AppDelegate.m */ = {isa = PBXFileReference; name = "RNBackgroundFetch+AppDelegate.m"; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/RNBackgroundFetch+AppDelegate.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		443CF40FF20D4B539871F782 /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativePermissions.xcodeproj"; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		04C6AEAA365B4656B90B57EF /* libReactNativePermissions.a */ = {isa = PBXFileReference; name = "libReactNativePermissions.a"; path = "libReactNativePermissions.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		B2D73B967C2F4F1992F14053 /* ReactNativeCameraKit.xcodeproj */ = {isa = PBXFileReference; name = "ReactNativeCameraKit.xcodeproj"; path = "../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		501337E4A4FD4C789A7A62FF /* libReactNativeCameraKit.a */ = {isa = PBXFileReference; name = "libReactNativeCameraKit.a"; path = "libReactNativeCameraKit.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,6 +399,7 @@
 				DF5A9FB2C6F149BC8EEEADE6 /* libRNBackgroundFetch.a in Frameworks */,
 				81E872B45E1842B1B792B219 /* TSBackgroundFetch.framework in Frameworks */,
 				F2D05CD1D1AB422DBC63E9B9 /* libReactNativePermissions.a in Frameworks */,
+				49F3AD158E204416A320B764 /* libReactNativeCameraKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +594,7 @@
 				CB422BDABB1443AFB43B181D /* RNBackgroundGeolocation.xcodeproj */,
 				116E490819B6438CAC7CF9A5 /* RNBackgroundFetch.xcodeproj */,
 				443CF40FF20D4B539871F782 /* ReactNativePermissions.xcodeproj */,
+				B2D73B967C2F4F1992F14053 /* ReactNativeCameraKit.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1227,12 +1232,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1260,12 +1267,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1294,6 +1303,7 @@
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1321,6 +1331,7 @@
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1357,12 +1368,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1399,12 +1412,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1440,12 +1455,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
@@ -1481,12 +1498,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation/**",
 					"$(SRCROOT)/../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/**",
 					"$(SRCROOT)/../node_modules/react-native-permissions/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit",
 				);
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../node_modules/react-native-background-geolocation/ios/**",
