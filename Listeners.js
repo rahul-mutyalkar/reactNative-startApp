@@ -54,7 +54,7 @@ export function registerKilledListener() {
 // these callback will be triggered only when app is foreground or background
 export function registerAppListener(navigation) {
   FCM.on(FCMEvent.Notification, notif => {
-    console.war("Notification", notif);
+    console.warn("New Notification", notif);
 
     if (Platform.OS === 'ios' && notif._notificationType === NotificationType.WillPresent && !notif.local_notification) {
       // this notification is only to decide if you want to show the notification when user if in foreground.
@@ -64,6 +64,7 @@ export function registerAppListener(navigation) {
     }
 
     if (notif.opened_from_tray) {
+      console.log('notif.opened_from_tray : ', JSON.stringify(notif));
       if (notif.targetScreen === 'detail') {
         setTimeout(() => {
           navigation.navigate('Detail')

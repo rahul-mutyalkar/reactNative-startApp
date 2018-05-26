@@ -43,6 +43,7 @@ export default class App extends Component < Props > {
     registerAppListener(this.props.navigation);
     FCM.getInitialNotification().then(notif => {
       // this.setState({initNotif: notif});
+      console.warn("notif : ", notif)
       if (notif && notif.targetScreen === "detail") {
         setTimeout(() => {
           // this.props.navigation.navigate("Detail");
@@ -51,9 +52,11 @@ export default class App extends Component < Props > {
     });
 
     try {
-      let result = await FCM.requestPermissions({badge: false, sound: true, alert: true});
+
+      let result = await FCM.requestPermissions({badge: true, sound: true, alert: true});
+      console.warn('FCM.requestPermissions -> result', JSON.stringify(result));
     } catch (e) {
-      console.error(e);
+      console.warn("FCM.requestPermissions -> error : ", e);
     }
 
     FCM.getFCMToken().then(token => {
@@ -70,7 +73,6 @@ export default class App extends Component < Props > {
     }
 
     // topic example
-
     FCM.subscribeToTopic('sometopic')
     // FCM.unsubscribeFromTopic('sometopic')
   }
