@@ -1,8 +1,9 @@
-package com.starterapp;
+package com.fcmplugin.newspoint;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.evollu.react.fcm.FIRMessagingPackage;
 import com.wix.RNCameraKit.RNCameraKitPackage;
 import com.wscodelabs.callLogs.CallLogPackage;
 import com.rhaker.reactnativesmsandroid.RNSmsAndroidPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FIRMessagingPackage(),
             new RNCameraKitPackage(),
             new CallLogPackage(),
             new RNSmsAndroidPackage(),

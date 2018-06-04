@@ -20,6 +20,11 @@ var SmsAndroid = require('react-native-sms-android');
 import Permissions from 'react-native-permissions'
 import CallLogs from 'react-native-call-log'
 
+/* FCM plugin */
+import FCM, {NotificationActionType} from "react-native-fcm";
+
+import {registerKilledListener, registerAppListener} from "./Listeners";
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\n' + 'Shake or press menu button for dev menu'
@@ -32,6 +37,44 @@ export default class App extends Component < Props > {
     super(props);
 
     this.state = {};
+  }
+
+  async componentDidMount() {
+    registerAppListener(this.props.navigation);
+    FCM.getInitialNotification().then(notif => {
+      // this.setState({initNotif: notif});
+      // console.warn("notif : ", notif)
+      if (notif && notif.targetScreen === "detail") {
+        setTimeout(() => {
+          // this.props.navigation.navigate("Detail");
+        }, 500);
+      }
+    });
+
+    try {
+
+      let result = await FCM.requestPermissions({badge: true, sound: true, alert: true});
+      // console.warn('FCM.requestPermissions -> result', JSON.stringify(result));
+    } catch (e) {
+      // console.warn("FCM.requestPermissions -> error : ", e);
+    }
+
+    FCM.getFCMToken().then(token => {
+      // console.log("TOKEN (getFCMToken)", token);
+      // this.setState({
+      //   token: token || ""
+      // });
+    });
+
+    if (Platform.OS === "ios") {
+      FCM.getAPNSToken().then(token => {
+        // console.log("APNS TOKEN (getFCMToken)", token);
+      });
+    }
+
+    // topic example
+    FCM.subscribeToTopic('sometopic')
+    // FCM.unsubscribeFromTopic('sometopic')
   }
 
   componentWillMount() {
@@ -100,16 +143,16 @@ export default class App extends Component < Props > {
   }
   onLocation(location) {
     this.setState({locationInfo: JSON.stringify(location)});
-    console.warn('- [event] location: ', this.state.locationInfo);
+    // console.warn('- [event] location: ', this.state.locationInfo);
   }
   onError(error) {
-    console.warn('- [event] location error ', error);
+    // console.warn('- [event] location error ', error);
   }
   onActivityChange(activity) {
-    console.log('- [event] activitychange: ', activity); // eg: 'on_foot', 'still', 'in_vehicle'
+    // console.log('- [event] activitychange: ', activity); // eg: 'on_foot', 'still', 'in_vehicle'
   }
   onProviderChange(provider) {
-    console.log('- [event] providerchange: ', provider);
+    // console.log('- [event] providerchange: ', provider);
   }
   onMotionChange(location) {
     console.log('- [event] motionchange: ', location.isMoving, location);
@@ -148,9 +191,9 @@ export default class App extends Component < Props > {
     };
     Permissions.request('readSms').then(response => {
       /* get SMS list */
-      console.warn('permission grated: ');
+      // console.warn('permission grated: ');
       SmsAndroid.list(JSON.stringify(filter), (fail) => {
-        console.warn("OH Snap: " + fail)
+        // console.warn("OH Snap: " + fail)
       }, (count, smsList) => {
         console.log('Count: ', count);
         console.log('List: ', smsList);
@@ -178,7 +221,7 @@ export default class App extends Component < Props > {
     let self = this;
     Permissions.request('readCallLog').then(response => {
       /* get SMS list */
-      console.warn('calllog permission grated: ');
+      // console.warn('calllog permission grated: ');
       CallLogs.show((logs) => {
         // parse logs into json format
         const parsedLogs = JSON.parse(logs);
